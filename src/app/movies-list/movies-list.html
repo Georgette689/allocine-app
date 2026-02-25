@@ -1,41 +1,29 @@
-<div class="hero-section text-white d-flex align-items-center mb-5">
-  <div class="container text-center py-5">
-    <h1 class="display-2 fw-bold animate-fade-in">DOUCEUR <span class="text-warning">CINÉMA</span></h1>
-    <p class="lead fs-4 opacity-75">Votre bibliothèque privée de pépites cinématographiques</p>
-    <a routerLink="/add-movie" class="btn btn-warning btn-lg px-5 rounded-pill shadow fw-bold mt-3">
-       <i class="bi bi-plus-circle-fill me-2"></i>AJOUTER UNE PRODUCTION
-    </a>
-  </div>
-</div>
-
 <div class="container mb-5">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
     @for (movie of movies; track movie.id) {
       <div class="col">
-        <div class="card h-100 border-0 shadow-sm movie-card bg-white">
+        <div class="card h-100 shadow-sm movie-card bg-white">
           
-          <div class="position-relative overflow-hidden card-header-image">
-            <img [src]="movie.image || 'https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000'" 
-                 class="card-img-top shadow" alt="Poster">
-            
+          <div class="position-relative card-header-image">
+            <img [src]="'http://localhost:8080/movies/' + movie.id + '/image'" class="card-img-top" alt="Poster">             
             <div class="card-img-overlay d-flex flex-column justify-content-end p-0">
               <div class="badge-rating shadow-sm">
                 <i class="bi bi-star-fill text-warning me-1"></i> {{ movie.rate }}
               </div>
+              <h5 class="overlay-title p-3">{{ movie.title }}</h5> 
             </div>
-          </div>
+            </div>
           
           <div class="card-body">
-            <h5 class="card-title fw-bold text-dark text-uppercase mb-1 small">{{ movie.title }}</h5>
-            <p class="text-warning small fw-bold mb-2">{{ movie.director }}</p>
-            <p class="card-text text-secondary small text-truncate-3">
+            <h5 class="card-title text-dark text-uppercase small">{{ movie.title }}</h5>
+            <p class="card-director small">{{ movie.director }}</p> <p class="card-text">
               {{ movie.synopsis }}
             </p>
           </div>
           
-          <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center pb-3">
-            <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>{{ movie.releaseDate | date:'yyyy' }}</small>
-            <button class="btn btn-outline-danger btn-sm border-0 rounded-circle" (click)="deleteMovie(movie.id!)">
+          <div class="card-footer d-flex justify-content-between align-items-center">
+            <small class="release-date"><i class="bi bi-calendar3 me-1"></i>{{ movie.releaseDate | date:'yyyy' }}</small>
+            <button class="btn btn-delete" (click)="deleteMovie(movie.id!)">
               <i class="bi bi-trash3-fill"></i>
             </button>
           </div>

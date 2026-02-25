@@ -1,11 +1,123 @@
-/* Modif de test pour l'équipe */
-.movie-card:hover {
-  outline: 4px solid #fecc00; /* Bordure jaune Allociné au survol */
-  outline-offset: 2px;
-  box-shadow: 0 0 20px rgba(254, 204, 0, 0.5) !important;
+/* --- Global Card Styling --- */
+.movie-card {
+  border-radius: 12px; // Des bords doux pour la carte
+  overflow: hidden; // Cache le contenu qui dépasse (important pour le zoom)
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; // Indique que la carte est interactive
+  position: relative; // Pour positionner les éléments internes
+  border: none; // On enlève la bordure Bootstrap par défaut
+
+  // Effet au survol : Légère élévation et ombre plus marquée
+  &:hover {
+    transform: translateY(-8px); // La carte monte légèrement
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25) !important;
+  }
 }
 
-/* On change aussi la couleur du titre au survol */
-.movie-card:hover .card-title {
-  color: #fecc00 !important;
+/* --- Image Container & Zoom Effect --- */
+.card-header-image {
+  height: 380px; // Hauteur fixe pour toutes les affiches
+  overflow: hidden; // Empêche le zoom de dépasser
+  position: relative;
+  background-color: #1a1a1a; // Couleur de fond si l'image ne charge pas
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // L'image remplit le cadre sans être déformée
+    transition: transform 0.4s ease-out; // Animation du zoom (rapide et doux)
+  }
+
+  // L'image zoome quand on passe la souris sur toute la carte
+  .movie-card:hover & img {
+    transform: scale(1.08); // Zoom de 8%
+  }
+}
+
+/* --- Overlay pour le titre au survol --- */
+.card-img-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%); // Dégradé noir transparent
+  opacity: 0; // Invisible par défaut
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end; // Le contenu (titre) est en bas
+  padding: 1rem; // Un peu d'espace
+
+  // L'overlay apparaît quand on survole la carte
+  .movie-card:hover & {
+    opacity: 1;
+  }
+
+  .overlay-title {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7); // Ombre pour la lisibilité
+  }
+}
+
+/* --- Badge Rating (l'étoile) --- */
+.badge-rating {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  backdrop-filter: blur(4px); // Effet de flou derrière le badge
+  border: 1px solid rgba(254, 204, 0, 0.4);
+  z-index: 2; // S'assure qu'il est au-dessus de tout
+}
+
+/* --- Card Body & Footer --- */
+.card-body {
+  padding: 1rem;
+  .card-title {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+  .card-director {
+    font-size: 0.85rem;
+    color: #fecc00; // Le nom du réalisateur en jaune Allociné
+    margin-bottom: 0.5rem;
+  }
+  .card-text {
+    font-size: 0.9rem;
+    color: #666;
+    height: 60px; // Hauteur fixe pour le synopsis
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; // Limite le synopsis à 3 lignes
+    -webkit-box-orient: vertical;
+  }
+}
+
+.card-footer {
+  background-color: white; // Fond du footer
+  border-top: 1px solid #eee; // Bordure discrète
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .release-date {
+    font-size: 0.8rem;
+    color: #888;
+  }
+
+  .btn-delete {
+    color: #dc3545; // Rouge pour l'icône de suppression
+    background-color: transparent;
+    border: none;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+    &:hover {
+      color: #b02a37;
+    }
+  }
 }
