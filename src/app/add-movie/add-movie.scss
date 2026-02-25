@@ -1,0 +1,19 @@
+.form-control:focus {
+  border-color: #fecc00;
+  box-shadow: 0 0 0 0.25rem rgba(254, 204, 0, 0.25);
+  background-color: #fff !important;
+}
+
+.card {
+  transition: transform 0.3s ease;
+}
+
+label {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  color: #555;
+}
+
+.input-group-text {
+  border: 1px solid #ced4da;
+}

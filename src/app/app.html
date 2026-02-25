@@ -1,4 +1,62 @@
-<app-navbar [title]="title()"></app-navbar>
+<nav class="navbar navbar-expand-lg navbar-dark bg-allocine shadow-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <i class="bi bi-film me-2 text-allocine fs-2"></i>
+      <span class="fw-bold fs-3">ALLO<span class="text-allocine">CINÉ</span></span>
+    </a>
+    
+    <button class="btn btn-allocine shadow-sm px-4" routerLink="/add-movie">
+      <i class="bi bi-plus-circle-fill me-2"></i>NOUVEAU FILM
+    </button>
+  </div>
+</nav>
 
-<router-outlet></router-outlet>
+<main class="min-vh-100">
+  <router-outlet></router-outlet>
+</main>
 
+<footer class="bg-allocine text-white pt-5 pb-3">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h5 class="text-uppercase fw-light">Trouvez un film avec l'un de nos cinémas partenaires :</h5>
+    </div>
+    <div class="row text-center text-md-start">
+      <div class="col-md-3 mb-3">
+        <h6 class="text-allocine fw-bold mb-3">PARIS</h6>
+        <ul class="list-unstyled small opacity-75">
+          <li>Beaugrenelle</li>
+          <li>Champs-Elysées</li>
+          <li>La Villette</li>
+        </ul>
+      </div>
+      <div class="col-md-3 mb-3">
+        <h6 class="text-allocine fw-bold mb-3">LYON</h6>
+        <ul class="list-unstyled small opacity-75">
+          <li>Vaise</li>
+          <li>Carré de Soie</li>
+          <li>Bellecour</li>
+        </ul>
+      </div>
+      <div class="col-md-3 mb-3">
+        <h6 class="text-allocine fw-bold mb-3">MARSEILLE</h6>
+        <ul class="list-unstyled small opacity-75">
+          <li>Madeleine</li>
+          <li>Plan de campagne</li>
+          <li>La Joliette</li>
+        </ul>
+      </div>
+      <div class="col-md-3 mb-3">
+        <h6 class="text-allocine fw-bold mb-3">NICE</h6>
+        <ul class="list-unstyled small opacity-75">
+          <li>Lingostière</li>
+          <li>Masséna</li>
+          <li>Gare du Sud</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="bg-secondary mt-4">
+    <div class="text-center small opacity-50">
+      2024 Copyright: Takima - Projet TakiCiné
+    </div>
+  </div>
+</footer>

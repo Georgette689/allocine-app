@@ -1,2 +1,48 @@
-@import "bootstrap-icons/font/bootstrap-icons.css";
-@import url(bootstrap);
+/* Effet de verre pour les badges */
+.badge-rating {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(26, 26, 26, 0.85);
+  backdrop-filter: blur(4px);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  border: 1px solid rgba(254, 204, 0, 0.3);
+}
+
+/* Image avec zoom doux */
+.card-header-image {
+  border-radius: 15px 15px 0 0;
+  height: 380px;
+  img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+}
+
+.movie-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Titre avec soulignement au survol */
+.card-title {
+  position: relative;
+  display: inline-block;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--allocine-yellow);
+    transition: width 0.3s ease;
+  }
+}
+
+.movie-card:hover .card-title::after {
+  width: 100%;
+}
