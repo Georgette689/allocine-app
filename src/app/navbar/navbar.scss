@@ -1,0 +1,46 @@
+.navbar {
+  // Une petite ombre pour donner de la profondeur
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  margin-bottom: 20px;
+
+  .navbar-brand {
+    font-weight: 800;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-right: 2px solid #dee2e6;
+    padding-right: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    margin: 0 10px;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+
+    // L'effet au survol
+    &:hover {
+      color: #0d6efd !important;
+    }
+
+    // Le style pour le lien de la page actuelle
+    &.active-link {
+      color: #0d6efd !important;
+      
+      // Petit point sous le texte pour marquer la page active
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 5px;
+        height: 5px;
+        background-color: #0d6efd;
+        border-radius: 50%;
+      }
+    }
+  }
+}

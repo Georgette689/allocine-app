@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-secondary m-0">Gestion des Films</h2>
+    <button class="btn btn-success shadow-sm" routerLink="/add-movie">
+      + Nouveau film
+    </button>
+  </div>
+
+  <div class="card shadow-sm border-0">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover mb-0">
+       <thead class="table-dark">
+  <tr>
+    <th># ID</th>
+    <th>Titre</th>
+    <th>Date de sortie</th>
+    <th>Réalisateur</th>
+    <th>Note</th>
+    <th>Synopsis</th>
+    <th class="text-center">Actions</th> </tr>
+</thead>
+<tbody>
+  @for (movie of movies; track movie.id) {
+    <tr class="align-middle">
+      <td>{{ movie.id }}</td>
+      <td class="fw-bold">{{ movie.title }}</td>
+      <td>{{ movie.releaseDate | date:'dd/MM/yy' }}</td>
+      <td>{{ movie.director }}</td>
+      <td><span class="badge bg-warning text-dark">{{ movie.rate }}/5</span></td>
+      <td><small class="text-truncate d-inline-block" style="max-width: 150px;">{{ movie.synopsis }}</small></td>
+      
+      <td class="text-center">
+        <button class="btn btn-outline-danger btn-sm" (click)="deleteMovie(movie.id!)">
+          <i class="bi bi-trash-fill"></i>
+        </button>
+      </td>
+    </tr>
+  }
+</tbody>
+      </table>
+    </div>
+  </div>
+</div>
