@@ -1,14 +1,28 @@
 import { Component, Input } from '@angular/core';
-import { TitleCasePipe, CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router'; // Import manquant ici
+import { CommonModule, TitleCasePipe } from '@angular/common';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { ThemeService } from '../theme-service/theme-service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, TitleCasePipe, RouterLink, RouterLinkActive], // Ajout ici
+  imports: [
+    CommonModule,
+    TitleCasePipe,
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet
+  ],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })
-export class Navbar { 
-  @Input({ required: true }) title! : string
+export class Navbar {
+  constructor(public themeService: ThemeService) {}  
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
+
+  @Input({ required: true }) title!: string;
+
 }
