@@ -1,13 +1,13 @@
-import { Component, inject, OnInit } from '@angular/core'; // 1. Vérifie l'import de OnInit
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
-import { RouterLink } from '@angular/router'; // 2. Important pour le bouton ajouter
+import { RouterLink } from '@angular/router';
 import { MoviesApiService } from '../services/movies-api.service';
 import { Movie } from '../models/movie';
 
 @Component({
   selector: 'app-movies-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, RouterLink], // 3. Indispensable pour que routerLink fonctionne
+  imports: [CommonModule, DatePipe, RouterLink],
   templateUrl: './movies-list.html',
   styleUrl: './movies-list.scss'
 })
@@ -15,21 +15,23 @@ export class MoviesList implements OnInit {
   private movieService = inject(MoviesApiService);
   movies: Movie[] = [];
 
-  // 4. La méthode ngOnInit est OBLIGATOIRE si tu as mis "implements OnInit"
   ngOnInit(): void {
     this.loadMovies();
   }
 
   loadMovies() {
-    this.movieService.getMovies().subscribe(data => {
-      this.movies = data;
+    this.movieService.getMovies().subscribe({
+      next: (data) => {
+        this.movies = data;
+      },
+      error: (err) => console.error('Erreur de chargement', err)
     });
   }
 
   deleteMovie(id: number) {
-    if(confirm('Voulez-vous supprimer ce film ?')) {
+    if(confirm('Voulez-vous vraiment supprimer ce film de la collection ?')) {
       this.movieService.deleteMovie(id).subscribe(() => {
-        this.loadMovies(); // Recharge la liste après suppression
+        this.loadMovies();
       });
     }
   }
