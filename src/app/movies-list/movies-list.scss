@@ -1,56 +1,11 @@
-/* Hero Section */
-.hero-section {
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-              url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=2000');
-  background-size: cover;
-  background-position: center;
-  min-height: 400px;
-  border-bottom: 5px solid #fecc00;
+/* Modif de test pour l'équipe */
+.movie-card:hover {
+  outline: 4px solid #fecc00; /* Bordure jaune Allociné au survol */
+  outline-offset: 2px;
+  box-shadow: 0 0 20px rgba(254, 204, 0, 0.5) !important;
 }
 
-/* Card Style */
-.movie-card {
-  transition: all 0.3s ease-in-out;
-  border-radius: 15px !important;
-  
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
-    
-    .card-img-top {
-      transform: scale(1.08);
-    }
-  }
-}
-
-.card-header-image {
-  height: 350px;
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-  }
-}
-
-/* Badge Rating */
-.badge-rating {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-weight: bold;
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(254, 204, 0, 0.4);
-  z-index: 2;
-}
-
-.text-truncate-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
+/* On change aussi la couleur du titre au survol */
+.movie-card:hover .card-title {
+  color: #fecc00 !important;
 }
