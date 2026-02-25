@@ -1,39 +1,37 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'; // Indispensable !
 import { Router, RouterLink } from '@angular/router';
 import { MoviesApiService } from '../services/movies-api.service';
-import { Movie } from '../models/movie';
 
 @Component({
   selector: 'app-add-movie',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink], // ReactiveFormsModule doit être ici
   templateUrl: './add-movie.html',
   styleUrl: './add-movie.scss'
 })
 export class AddMovie {
-  private moviesApi = inject(MoviesApiService);
+  private fb = inject(FormBuilder);
+  private movieService = inject(MoviesApiService);
   private router = inject(Router);
 
-  movie: Movie = {
-    title: '',
-    director: '',
-    releaseDate: '', 
-    synopsis: '',
-    duration: '',      // <--- AJOUTE CETTE LIGNE
-    id: undefined,
-    rate: 5, 
-    image: 'https://via.placeholder.com/150'
-};
+  // Déclaration du formulaire pour ton HTML
+  movieForm: FormGroup = this.fb.group({
+    title: ['', Validators.required],
+    director: ['', [Validators.required]], 
+    releaseDate: ['', Validators.required],
+    rate: [0, [Validators.required, Validators.min(0), Validators.max(5)]],
+    synopsis: ['', [Validators.required, Validators.minLength(30)]],
+    image: ['']
+  });
 
-  addMovie(): void {
-    this.moviesApi.addMovie(this.movie).subscribe({
-      next: () => {
-        console.log("Film ajouté !");
-        this.router.navigate(['/movies']); // Redirige vers la liste
-      },
-      error: (err) => console.error("Erreur :", err)
-    });
+  // La fonction qui gère le clic sur ton bouton "ENREGISTRER"
+  onSubmit() {
+    if (this.movieForm.valid) {
+      this.movieService.addMovie(this.movieForm.value).subscribe(() => {
+        this.router.navigate(['/']); 
+      });
+    }
   }
 }
