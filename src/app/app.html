@@ -1,62 +1,55 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-allocine shadow-lg sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg sticky-top py-3">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" routerLink="/">
-      <i class="bi bi-film me-2 text-allocine fs-2"></i>
-      <span class="fw-bold fs-3">ALLO<span class="text-allocine">CINÉ</span></span>
+      <i class="bi bi-film me-2 text-warning fs-2"></i>
+      <span class="fw-bold fs-3 text-white">ALLO<span class="text-warning">CINÉ</span></span>
     </a>
     
-    <button class="btn btn-allocine shadow-sm px-4" routerLink="/add-movie">
+    <button class="btn btn-warning shadow-sm px-4 fw-bold rounded-pill ms-auto" routerLink="/add-movie">
       <i class="bi bi-plus-circle-fill me-2"></i>NOUVEAU FILM
     </button>
   </div>
 </nav>
 
-<main class="min-vh-100">
+<main class="min-vh-100 bg-light">
   <router-outlet></router-outlet>
 </main>
 
-<footer class="bg-allocine text-white pt-5 pb-3">
-  <div class="container">
-    <div class="text-center mb-4">
-      <h5 class="text-uppercase fw-light">Trouvez un film avec l'un de nos cinémas partenaires :</h5>
+<footer class="footer-funky bg-dark text-white pt-5 pb-4 mt-5">
+  <div class="container text-center">
+    <div class="footer-brand mb-4">
+      <h5 class="text-uppercase fw-bold text-warning">Nos Cinémas Partenaires</h5>
+      <div class="footer-line mx-auto"></div>
     </div>
-    <div class="row text-center text-md-start">
-      <div class="col-md-3 mb-3">
-        <h6 class="text-allocine fw-bold mb-3">PARIS</h6>
-        <ul class="list-unstyled small opacity-75">
-          <li>Beaugrenelle</li>
-          <li>Champs-Elysées</li>
-          <li>La Villette</li>
-        </ul>
+    
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-3">
+        <h6 class="text-warning small fw-bold">PARIS</h6>
+        <p class="small opacity-75">Beaugrenelle<br>La Villette</p>
       </div>
-      <div class="col-md-3 mb-3">
-        <h6 class="text-allocine fw-bold mb-3">LYON</h6>
-        <ul class="list-unstyled small opacity-75">
-          <li>Vaise</li>
-          <li>Carré de Soie</li>
-          <li>Bellecour</li>
-        </ul>
+      <div class="col-6 col-md-3">
+        <h6 class="text-warning small fw-bold">LYON</h6>
+        <p class="small opacity-75">Vaise<br>Bellecour</p>
       </div>
-      <div class="col-md-3 mb-3">
-        <h6 class="text-allocine fw-bold mb-3">MARSEILLE</h6>
-        <ul class="list-unstyled small opacity-75">
-          <li>Madeleine</li>
-          <li>Plan de campagne</li>
-          <li>La Joliette</li>
-        </ul>
+      <div class="col-6 col-md-3">
+        <h6 class="text-warning small fw-bold">MARSEILLE</h6>
+        <p class="small opacity-75">La Joliette<br>Madeleine</p>
       </div>
-      <div class="col-md-3 mb-3">
-        <h6 class="text-allocine fw-bold mb-3">NICE</h6>
-        <ul class="list-unstyled small opacity-75">
-          <li>Lingostière</li>
-          <li>Masséna</li>
-          <li>Gare du Sud</li>
-        </ul>
+      <div class="col-6 col-md-3">
+        <h6 class="text-warning small fw-bold">NICE</h6>
+        <p class="small opacity-75">Gare du Sud<br>Masséna</p>
       </div>
     </div>
-    <hr class="bg-secondary mt-4">
-    <div class="text-center small opacity-50">
-      2024 Copyright: Takima - Projet TakiCiné
+
+    <hr class="bg-secondary my-4 opacity-25">
+    
+    <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap px-3">
+      <p class="small opacity-50 m-0">© 2026 Takima - Projet TakiCiné</p>
+      <div class="social-icons">
+        <i class="bi bi-instagram mx-2"></i>
+        <i class="bi bi-twitter-x mx-2"></i>
+        <i class="bi bi-facebook mx-2"></i>
+      </div>
     </div>
   </div>
 </footer>

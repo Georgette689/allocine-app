@@ -1,19 +1,86 @@
-.form-control:focus {
-  border-color: #fecc00;
-  box-shadow: 0 0 0 0.25rem rgba(254, 204, 0, 0.25);
-  background-color: #fff !important;
+.form-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fdfdfd;
+  padding: 20px;
 }
 
-.card {
-  transition: transform 0.3s ease;
+.glass-form {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid white;
 }
 
-label {
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  color: #555;
+.form-title {
+  font-weight: 900;
+  color: #2d3436;
+  text-shadow: 2px 2px 0px #fecc00;
 }
 
-.input-group-text {
-  border: 1px solid #ced4da;
+.input-group-custom {
+  margin-bottom: 20px;
+  label {
+    display: block;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #636e72;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 15px;
+    border: 2px solid #eee;
+    background: #f9f9f9;
+    transition: 0.3s;
+    &:focus {
+      border-color: #fecc00;
+      outline: none;
+      background: white;
+    }
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  
+  button {
+    flex: 1;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: 900;
+    border: none;
+    transition: 0.3s;
+  }
+}
+
+.btn-save {
+  background: #fecc00;
+  color: black;
+  &:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(254, 204, 0, 0.4); }
+}
+
+.btn-cancel {
+  background: #eee;
+  color: #636e72;
+  &:hover { background: #dfe6e9; }
+}
+
+/* On réutilise le style de ta navbar */
+.btn-back {
+    background: #2d3436;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    &:hover { background: #fecc00; color: black; }
 }
