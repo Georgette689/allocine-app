@@ -1,0 +1,14 @@
+/* Contenu principal */
+.app-content {
+  padding: 20px;
+  min-height: calc(100vh - 80px); /* Ajuste selon la hauteur de ta navbar */
+  background-color: #f5f5f5;
+  transition: background-color 0.3s, color 0.3s;
+  color: #000000;
+}
+
+/* Mode sombre appliqué au body via ThemeService */
+body.dark-mode .app-content {
+  background-color: #121212;
+  color: #ffffff;
+}

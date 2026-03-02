@@ -1,24 +1,29 @@
-<nav class="navbar navbar-light navbar-expand bg-light ps-5">
-  <a class="navbar-brand" routerLink="/">{{ title | titlecase }}</a>
-  
-  <div class="navbar-nav">
-    <a class="nav-item nav-link" 
-       routerLink="/" 
-       routerLinkActive="active-link" 
-       [routerLinkActiveOptions]="{exact: true}">Accueil</a>
-       
-    <a class="nav-item nav-link" 
-       routerLink="/movies" 
-       routerLinkActive="active-link">Gestion de film</a>
+<nav class="navbar douceur-navbar shadow-sm" [class.expanded]="isExpanded()">
+
+  <!-- Ligne principale (logo + hamburger) -->
+  <div class="navbar-main-line">
+    <a class="navbar-brand douceur-logo" routerLink="/">
+      🎬 {{ title }}
+    </a>
+
+    <div class="nav-hamburger-wrapper"
+         (mouseenter)="hoverMenu = true"
+         (mouseleave)="hoverMenu = false">
+      <button class="hamburger" (click)="toggleMenu()">☰</button>
+    </div>
   </div>
-  <div> 
-    <a routerLink="/">Accueil</a>
-    <a routerLink="/movies">Films</a>
-    <a routerLink="/random">Surprends-moi</a>
+
+  <!-- Boutons supplémentaires centrés et étendus -->
+  <div class="nav-buttons">
+    <ng-container *ngIf="!auth.isLoggedIn(); else loggedIn">
+      <a class="btn douceur-outline rounded-pill px-4" routerLink="/login">Connexion</a>
+      <a class="btn douceur-primary rounded-pill px-4 fw-semibold" routerLink="/register">Créer un compte</a>
+    </ng-container>
+
+    <ng-template #loggedIn>
+      <a class="btn douceur-primary rounded-pill px-4" routerLink="/add-movie">Ajouter un film</a>
+      <button class="btn douceur-outline rounded-pill px-4" (click)="auth.logout()">Déconnexion</button>
+    </ng-template>
   </div>
-  <app-navbar [title]="'Surprends-moi'"></app-navbar>
-  <router-outlet></router-outlet>
-  <button (click)="toggleTheme()">
-    {{ themeService.isDarkMode() ? '☀️ Mode Clair' : '🌙 Mode Sombre' }}
-  </button>
+
 </nav>

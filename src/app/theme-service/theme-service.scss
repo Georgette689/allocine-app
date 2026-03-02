@@ -1,0 +1,33 @@
+/* Mode sombre global */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .douceur-navbar {
+  background: linear-gradient(90deg, #2c2c2c, #1c1c1c);
+}
+
+body.dark-mode .douceur-logo {
+  color: #ffd93d !important;
+}
+
+body.dark-mode .douceur-outline {
+  border-color: #ffd93d;
+  color: #ffd93d;
+}
+
+body.dark-mode .douceur-outline:hover {
+  background: #ffd93d;
+  color: black;
+}
+
+body.dark-mode .douceur-primary {
+  background: #ffd93d;
+  color: black;
+}
+
+body.dark-mode .douceur-theme {
+  background: #ffd93d;
+  color: black;
+}

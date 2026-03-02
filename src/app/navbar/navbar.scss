@@ -1,46 +1,104 @@
-.navbar {
-  // Une petite ombre pour donner de la profondeur
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  padding: 1rem 2rem;
-  margin-bottom: 20px;
+/* Navbar principale */
+.douceur-navbar {
+  background: linear-gradient(90deg, #1c1c1c, #2c2c2c);
+  padding: 14px 20px;
+  position: relative;
+  z-index: 100;
 
-  .navbar-brand {
-    font-weight: 800;
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-right: 2px solid #dee2e6;
-    padding-right: 1.5rem;
-    margin-right: 1.5rem;
-  }
+  display: flex;
+  flex-direction: column;
+  transition: height 0.3s ease, padding 0.3s ease, background 0.3s, border-radius 0.3s;
+  overflow: hidden;
+  height: 60px;
+  border-radius: 0;
+}
 
-  .nav-link {
-    font-weight: 500;
-    margin: 0 10px;
-    transition: all 0.2s ease-in-out;
-    position: relative;
+/* Navbar étendue */
+.douceur-navbar.expanded {
+  height: 200px;
+  padding-bottom: 10px;
+  background: linear-gradient(90deg, #1c1c1c, #3c3c5c);
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
 
-    // L'effet au survol
-    &:hover {
-      color: #0d6efd !important;
-    }
+/* Ligne principale (logo + hamburger) */
+.navbar-main-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    // Le style pour le lien de la page actuelle
-    &.active-link {
-      color: #0d6efd !important;
-      
-      // Petit point sous le texte pour marquer la page active
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 5px;
-        height: 5px;
-        background-color: #0d6efd;
-        border-radius: 50%;
-      }
-    }
-  }
+/* Logo à gauche */
+.douceur-logo {
+  font-size: 26px;
+  font-weight: 800;
+  color: #f8d210 !important;
+  text-decoration: none;
+  letter-spacing: 10px;
+  transition: opacity 0.3s;
+}
+.douceur-logo:hover {
+  opacity: 0.8;
+}
+
+/* Hamburger wrapper */
+.nav-hamburger-wrapper {
+  cursor: pointer;
+}
+
+/* Bouton hamburger */
+.hamburger {
+  font-size: 28px;
+  background: transparent;
+  border: none;
+  color: #f8d210;
+  transition: opacity 0.3s;
+}
+.hamburger:hover {
+  opacity: 0.7;
+}
+
+/* Zone des boutons centrée et étendue */
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Affiche les boutons lorsque la navbar est étendue */
+.douceur-navbar.expanded .nav-buttons {
+  opacity: 1;
+}
+
+/* Style des boutons étendus */
+.nav-buttons .btn {
+  width: 100%;            /* prend 80% de la largeur de la navbar */
+  max-width: 2000px;      /* limite la largeur si grand écran */
+  border-radius: 25px;
+  padding: 12px 0;       /* plus de padding vertical */
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.btn.douceur-outline:hover {
+  background: #f8d210;
+  color: black;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.btn.douceur-primary:hover {
+  background: linear-gradient(135deg, #ffd93d, #f8d210);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }

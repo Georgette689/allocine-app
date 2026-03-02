@@ -19,7 +19,7 @@ export class AddMovie {
   // Déclaration du formulaire pour ton HTML
   movieForm: FormGroup = this.fb.group({
     title: ['', Validators.required],
-    director: ['', [Validators.required]], 
+    director: ['', [Validators.required]],
     releaseDate: ['', Validators.required],
     rate: [0, [Validators.required, Validators.min(0), Validators.max(5)]],
     synopsis: ['', [Validators.required, Validators.minLength(30)]],
@@ -30,7 +30,7 @@ export class AddMovie {
   onSubmit() {
     if (this.movieForm.valid) {
       this.movieService.addMovie(this.movieForm.value).subscribe(() => {
-        this.router.navigate(['/']); 
+        this.router.navigate(['/']);
       });
     }
   }

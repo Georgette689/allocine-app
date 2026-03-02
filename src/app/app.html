@@ -1,24 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-allocine shadow-lg sticky-top">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" routerLink="/">
-      <i class="bi bi-film me-2 text-allocine fs-2"></i>
-      <span class="fw-bold fs-3">ALLO<span class="text-allocine">CINÉ</span></span>
-    </a>
-    
-    <button class="btn btn-allocine shadow-sm px-4" routerLink="/add-movie">
-      <i class="bi bi-plus-circle-fill me-2"></i>NOUVEAU FILM
-    </button>
-  </div>
-</nav>
+<!-- App.html corrigé -->
 
-<main class="min-vh-100">
+<!-- Navbar standalone -->
+<app-navbar [title]="'ALLO CINÉ'"></app-navbar>
+
+<!-- Zone principale de contenu -->
+<main class="app-content">
   <router-outlet></router-outlet>
 </main>
 
+<!-- Footer -->
 <footer class="bg-allocine text-white pt-5 pb-3">
   <div class="container">
     <div class="text-center mb-4">
-      <h5 class="text-uppercase fw-light">Trouvez un film avec l'un de nos cinémas partenaires :</h5>
+      <h5 class="text-uppercase fw-light">
+        Trouvez un film avec l'un de nos cinémas partenaires :
+      </h5>
     </div>
     <div class="row text-center text-md-start">
       <div class="col-md-3 mb-3">
