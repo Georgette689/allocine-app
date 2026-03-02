@@ -1,63 +1,52 @@
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8 col-lg-6">
-      <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
-        <div class="card-header bg-allocine text-dark text-center py-4">
-          <i class="bi bi-camera-reels fs-1 mb-2"></i>
-          <h2 class="fw-bold mb-0">AJOUTER UN FILM</h2>
+<nav class="custom-nav shadow-sm mb-5">
+  <div class="container d-flex justify-content-between align-items-center">
+    <span class="brand-logo" routerLink="/">🎬 ALLOCINÉ</span>
+    <a routerLink="/" class="btn-back">
+      <i class="bi bi-arrow-left-circle-fill me-2"></i>RETOUR À LA LISTE
+    </a>
+  </div>
+</nav>
+
+<div class="form-container">
+  <div class="glass-form shadow-lg">
+    <h1 class="form-title text-center mb-4">AJOUTER UNE PÉPITE 🍿</h1>
+    
+    <form class="custom-form">
+      <div class="input-group-custom">
+        <label>Titre du film</label>
+        <input type="text" placeholder="Ex: Inception">
+      </div>
+
+      <div class="input-group-custom">
+        <label>Réalisateur</label>
+        <input type="text" placeholder="Ex: CHRISTOPHER NOLAN">
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 input-group-custom">
+          <label>Date de sortie</label>
+          <input type="date">
         </div>
-        
-        <div class="card-body p-4 p-md-5 bg-white">
-          <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
-            
-            <div class="mb-4">
-              <label class="form-label fw-bold">Titre du film</label>
-              <div class="input-group">
-                <span class="input-group-text bg-light border-end-0"><i class="bi bi-type text-allocine"></i></span>
-                <input type="text" formControlName="title" class="form-control border-start-0 bg-light" placeholder="Ex: Inception">
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <label class="form-label fw-bold">Réalisateur (MAJUSCULES)</label>
-              <div class="input-group">
-                <span class="input-group-text bg-light border-end-0"><i class="bi bi-person-badge text-allocine"></i></span>
-                <input type="text" formControlName="director" class="form-control border-start-0 bg-light text-uppercase" placeholder="Ex: CHRISTOPHER NOLAN">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6 mb-4">
-                <label class="form-label fw-bold">Date de sortie</label>
-                <input type="date" formControlName="releaseDate" class="form-control bg-light">
-              </div>
-              <div class="col-md-6 mb-4">
-                <label class="form-label fw-bold">Note / 5</label>
-                <input type="number" formControlName="rate" class="form-control bg-light" step="0.5" min="0" max="5">
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <label class="form-label fw-bold">Synopsis</label>
-              <textarea formControlName="synopsis" class="form-control bg-light" rows="4" placeholder="Décrivez le film en plus de 30 caractères..."></textarea>
-              <div class="form-text text-end">{{ movieForm.get('synopsis')?.value?.length || 0 }} / 30 min.</div>
-            </div>
-
-            <div class="mb-4">
-              <label class="form-label fw-bold">URL de l'affiche</label>
-              <input type="text" formControlName="image" class="form-control bg-light" placeholder="https://...">
-            </div>
-
-            <div class="d-grid gap-2 mt-5">
-              <button type="submit" [disabled]="movieForm.invalid" class="btn btn-allocine btn-lg shadow rounded-pill py-3">
-                <i class="bi bi-check-circle-fill me-2"></i>ENREGISTRER LE FILM
-              </button>
-              <button type="button" routerLink="/" class="btn btn-link text-muted">Annuler</button>
-            </div>
-            
-          </form>
+        <div class="col-md-6 input-group-custom">
+          <label>Note / 5</label>
+          <input type="number" step="0.1" min="0" max="5">
         </div>
       </div>
-    </div>
+
+      <div class="input-group-custom">
+        <label>Synopsis</label>
+        <textarea rows="3" placeholder="Décrivez le film en plus de 30 caractères..."></textarea>
+      </div>
+
+      <div class="input-group-custom">
+        <label>URL de l'affiche</label>
+        <input type="text" placeholder="https://...">
+      </div>
+
+      <div class="form-actions mt-4">
+        <button type="submit" class="btn-save">ENREGISTRER LE FILM</button>
+        <button type="button" class="btn-cancel" routerLink="/">ANNULER</button>
+      </div>
+    </form>
   </div>
 </div>

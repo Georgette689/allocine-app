@@ -1,32 +1,36 @@
-<div class="container mb-5">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+<div class="container py-5">
+  
+  <div class="text-center mb-5 header-container">
+    <h1 class="douceur-title">🎬 DOUCEUR CINÉMA 🍿</h1>
+    <div class="title-glow"></div>
+    <p class="subtitle-fancy">L'art du septième art, rien que pour vous.</p>
+  </div>
+
+  <div class="movie-grid">
     @for (movie of movies; track movie.id) {
-      <div class="col">
-        <div class="card h-100 shadow-sm movie-card bg-white">
+      <div class="movie-card-wrapper">
+        <div class="funky-card shadow">
           
-          <div class="position-relative card-header-image">
-            <img [src]="'http://localhost:8080/movies/' + movie.id + '/image'" class="card-img-top" alt="Poster">             
-            <div class="card-img-overlay d-flex flex-column justify-content-end p-0">
-              <div class="badge-rating shadow-sm">
-                <i class="bi bi-star-fill text-warning me-1"></i> {{ movie.rate }}
-              </div>
-              <h5 class="overlay-title p-3">{{ movie.title }}</h5> 
+          <div class="image-box">
+            <img [src]="'http://localhost:8080/movies/' + movie.id + '/image'" alt="Affiche">
+            <div class="rating-ribbon">
+              <i class="bi bi-star-fill"></i> {{ movie.rate }}
             </div>
+          </div>
+
+          <div class="content-box">
+            <h5 class="movie-title">{{ movie.title }}</h5>
+            <span class="director-badge">{{ movie.director }}</span>
+            <p class="synopsis-box">{{ movie.synopsis | slice:0:100 }}...</p>
+            
+            <div class="card-footer-fun">
+              <span class="year-label"><i class="bi bi-calendar3"></i> {{ movie.releaseDate | date:'yyyy' }}</span>
+              <button class="delete-circle" (click)="deleteMovie(movie.id!)">
+                <i class="bi bi-trash3-fill"></i>
+              </button>
             </div>
-          
-          <div class="card-body">
-            <h5 class="card-title text-dark text-uppercase small">{{ movie.title }}</h5>
-            <p class="card-director small">{{ movie.director }}</p> <p class="card-text">
-              {{ movie.synopsis }}
-            </p>
           </div>
-          
-          <div class="card-footer d-flex justify-content-between align-items-center">
-            <small class="release-date"><i class="bi bi-calendar3 me-1"></i>{{ movie.releaseDate | date:'yyyy' }}</small>
-            <button class="btn btn-delete" (click)="deleteMovie(movie.id!)">
-              <i class="bi bi-trash3-fill"></i>
-            </button>
-          </div>
+
         </div>
       </div>
     }
